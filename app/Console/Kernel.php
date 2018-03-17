@@ -31,18 +31,18 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarTemperatura());
-        })->cron('* * * * * *');
+        })->everyTenMinutes();
 
         $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarPressao());
-        })->cron('* * * * * *');
+        })->everyTenMinutes();
 
         $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarUmidade());
-        })->cron('* * * * * *');
+        })->everyTenMinutes();
 
         $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarAltitude());
-        })->cron('* * * * * *');
+        })->everyTenMinutes();
     }
 }
