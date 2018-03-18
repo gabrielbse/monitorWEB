@@ -1,1 +1,0 @@
-@ php artisan schedule:run >null 2>&1

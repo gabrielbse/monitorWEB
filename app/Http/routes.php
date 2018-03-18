@@ -18,34 +18,41 @@ Route::group(['middleware' => ['auth']], function() {
        
        //Rotas de Usuário
     Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'users.index', 'uses' => 'UserController@index', 'middleware' => ['permission:usuario-list|usuario-create|usuario-edit|usuario-delete']]);
-        Route::get('/acende',['as' => 'users.acende', 'uses' => 'UserController@acende', 'middleware' => ['permission:usuario-list']]);
-        Route::get('/apaga', ['as' => 'users.apaga', 'uses' => 'UserController@apaga', 'middleware' => ['permission:usuario-create']]);
-        
+        Route::get('', ['as' => 'users.index', 'uses' => 'UserController@index', 'middleware' => ['permission:usuario']]);        
     });
     Route::group(['prefix' => 'temperatura', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'temperatura.index', 'uses' => 'TemperaturaController@index', 'middleware' => ['permission:temperatura-list|temperatura-create|temperatura-edit|temperatura-delete']]);;
-        Route::get('/temperatura', ['as' => 'temperatura.coleta', 'uses' => 'TemperaturaController@coleta', 'middleware' => ['permission:temperatura-create']]);
+        Route::get('', ['as' => 'temperatura.index', 'uses' => 'TemperaturaController@index', 'middleware' => ['permission:temperatura']]);;
+        Route::get('/temperatura', ['as' => 'temperatura.coleta', 'uses' => 'TemperaturaController@coleta', 'middleware' => ['permission:temperatura']]);
     });
 
     Route::group(['prefix' => 'umidade', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'umidade.index', 'uses' => 'UmidadeController@index', 'middleware' => ['permission:umidade-list|umidade-create|umidade-edit|umidade-delete']]);
-        Route::get('/umidade', ['as' => 'umidade.coleta', 'uses' => 'UmidadeController@coleta', 'middleware' => ['permission:umidade-create']]);
+        Route::get('', ['as' => 'umidade.index', 'uses' => 'UmidadeController@index', 'middleware' => ['permission:umidade']]);
+        Route::get('/umidade', ['as' => 'umidade.coleta', 'uses' => 'UmidadeController@coleta', 'middleware' => ['permission:umidade']]);
     });
 
     Route::group(['prefix' => 'altitude', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'altitude.index', 'uses' => 'AltitudeController@index', 'middleware' => ['permission:altitude-list|altitude-create|altitude-edit|altitude-delete']]);;
-        Route::get('/altitude', ['as' => 'altitude.coleta', 'uses' => 'AltitudeController@coleta', 'middleware' => ['permission:altitude-create']]);
+        Route::get('', ['as' => 'altitude.index', 'uses' => 'AltitudeController@index', 'middleware' => ['permission:altitude']]);;
+        Route::get('/altitude', ['as' => 'altitude.coleta', 'uses' => 'AltitudeController@coleta', 'middleware' => ['permission:altitude']]);
     });
 
     Route::group(['prefix' => 'pressao', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'pressao.index', 'uses' => 'PressaoController@index', 'middleware' => ['permission:pressao-list|pressao-create|pressao-edit|pressao-delete']]);
-        Route::get('/pressao', ['as' => 'pressao.coleta', 'uses' => 'PressaoController@coleta', 'middleware' => ['permission:pressao-create']]);
+        Route::get('', ['as' => 'pressao.index', 'uses' => 'PressaoController@index', 'middleware' => ['permission:pressao']]);
+        Route::get('/pressao', ['as' => 'pressao.coleta', 'uses' => 'PressaoController@coleta', 'middleware' => ['permission:pressao']]);
+    });
+
+    Route::group(['prefix' => 'configuracoes', 'where' => ['id' => '[0-9]+']], function() {
+        Route::get('', ['as' => 'configuracoes.index', 'uses' => 'ConfiguracoesController@index', 'middleware' => ['permission:configuracoes']]);
+        Route::post('/store', ['as' => 'configuracoes.store', 'uses' => 'ConfiguracoesController@store', 'middleware' => ['permission:configuracoes']]);
+    });
+
+    Route::group(['prefix' => 'alertas', 'where' => ['id' => '[0-9]+']], function() {
+        Route::get('', ['as' => 'alertas.index', 'uses' => 'AlertasController@index', 'middleware' => ['permission:alertas']]);
+        Route::post('/store', ['as' => 'alertas.store', 'uses' => 'AlertasController@store', 'middleware' => ['permission:alertas']]);
     });
 
     //Rotas de Roles
     Route::group(['prefix' => 'roles', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role-list|role-create|role-edit|role-delete']]);
-        Route::get('/list',['as' => 'roles.list', 'uses' => 'RoleController@listar', 'middleware' => ['permission:role-list']]);
+        Route::get('', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role']]);
+        Route::get('/list',['as' => 'roles.list', 'uses' => 'RoleController@listar', 'middleware' => ['permission:role']]);
     });
 });

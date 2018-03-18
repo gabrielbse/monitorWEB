@@ -24,7 +24,14 @@ class DatabaseSeeder extends Seeder
             'status' => 'Ativo', 
         ]);
 
-       for ($i=1; $i <= 24 ; $i++) { 
+        DB::table('configuracoes')->insert([
+            'intervalo_coleta' => 10,
+            'intervalo_relatorio' => 7,
+            'intervalo_grafico' => 5,
+            'enviar_email' => true,
+        ]);
+
+       for ($i=1; $i <= 12 ; $i++) { 
            DB::table('permission_role')->insert([
             'permission_id' => $i,
             'role_id' => '1',

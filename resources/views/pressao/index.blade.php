@@ -23,7 +23,7 @@
             @endsection
 
             <div class="pull-right">
-                @permission('pressao-create')
+                @permission('pressao')
                     <a class="temp btn btn-primary" title="Pressão" data-toggle="tooltip" href="{{ route('pressao.coleta') }}"><span class="glyphicon glyphicon-plus"></span> Obter Pressão</a>
                 @endpermission
             </div>

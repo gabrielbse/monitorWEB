@@ -14,7 +14,8 @@
         "yajra/laravel-datatables-oracle": "6.x",
         "paquettg/php-html-parser": "^1.7",
         "fideloper/proxy": "~3.3",
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "barryvdh/laravel-snappy": "^0.4.1"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

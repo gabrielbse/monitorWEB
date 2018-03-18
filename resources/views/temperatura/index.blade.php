@@ -23,7 +23,7 @@
             @endsection
 
             <div class="pull-right">
-                @permission('temperatura-create')
+                @permission('temperatura')
                     <a class="temp btn btn-primary" title="Temperatura" data-toggle="tooltip" href="{{ route('temperatura.coleta') }}"><span class="glyphicon glyphicon-plus"></span> Obter Temperatura</a>
                 @endpermission
             </div>

@@ -23,7 +23,7 @@
             @endsection
 
             <div class="pull-right">
-                @permission('altitude-create')
+                @permission('altitude')
                     <a class="temp btn btn-primary" title="Altitude" data-toggle="tooltip" href="{{ route('altitude.coleta') }}"><span class="glyphicon glyphicon-plus"></span> Obter Altitude</a>
                 @endpermission
             </div>

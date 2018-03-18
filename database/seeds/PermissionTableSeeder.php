@@ -38,112 +38,47 @@ estagiários) e o administrador geral.Os docentes poderão acessar o sistema par
                 'display_name' => 'Excluir papel',
                 'description' => 'Excluir papel'
             ],
-            // 5 a 8
+            // 5 a 12
             [
-                'name' => 'usuario-list',
-                'display_name' => 'Listagem de usuários',
-                'description' => 'Listar usuários'
+                'name' => 'usuario',
+                'display_name' => 'Manipulação de usuários',
+                'description' => 'Manupula as informações sobre usuários'
             ],
             [
-                'name' => 'usuario-create',
-                'display_name' => 'Cadastrar usuário',
-                'description' => 'Cadastrar novo usuário'
+                'name' => 'temperatura',
+                'display_name' => 'Manipulação de temperatura',
+                'description' => 'Manupula as informações sobre temperatura'
             ],
             [
-                'name' => 'usuario-edit',
-                'display_name' => 'Editar usuário',
-                'description' => 'Editar usuário'
+                'name' => 'umidade',
+                'display_name' => 'Manipulação de umidade',
+                'description' => 'Manupula as informações sobre umidade'
             ],
             [
-                'name' => 'usuario-delete',
-                'display_name' => 'Excluir usuário',
-                'description' => 'Excluir usuário'
-            ],
-            //9 a 12
-            [
-                'name' => 'temperatura-list',
-                'display_name' => 'Ver registros de temperatura',
-                'description' => 'Ver temperatura'
+                'name' => 'pressao',
+                'display_name' => 'Manipulação de pressao',
+                'description' => 'Manupula as informações sobre pressao'
             ],
             [
-                'name' => 'temperatura-create',
-                'display_name' => 'Registrar temperatura',
-                'description' => 'Registrar nova temperatura'
+                'name' => 'altitude',
+                'display_name' => 'Manipulação de altitude',
+                'description' => 'Manupula as informações sobre altitude'
             ],
             [
-                'name' => 'temperatura-edit',
-                'display_name' => 'Corrigir temperatura',
-                'description' => 'Corrigir temperatura'
+                'name' => 'configuracoes',
+                'display_name' => 'Manipulação de configurações',
+                'description' => 'Manupula as informações sobre configurações'
+            ],            
+            [
+                'name' => 'relatorio',
+                'display_name' => 'Manipulação de relatório',
+                'description' => 'Manupula as informações sobre relatório'
             ],
             [
-                'name' => 'temperatura-delete',
-                'display_name' => 'Excluir temperatura',
-                'description' => 'Excluir temperatura'
-            ],
-            //13 a 16
-            [
-                'name' => 'umidade-list',
-                'display_name' => 'Ver registros de umidade',
-                'description' => 'Ver umidade'
-            ],
-            [
-                'name' => 'umidade-create',
-                'display_name' => 'Registrar umidade',
-                'description' => 'Registrar nova umidade'
-            ],
-            [
-                'name' => 'umidade-edit',
-                'display_name' => 'Corrigir umidade',
-                'description' => 'Corrigir umidade'
-            ],
-            [
-                'name' => 'umidade-delete',
-                'display_name' => 'Excluir umidade',
-                'description' => 'Excluir umidade'
-            ],
-            //17 a 20
-            [
-                'name' => 'pressao-list',
-                'display_name' => 'Ver registros de pressao',
-                'description' => 'Ver pressao'
-            ],
-            [
-                'name' => 'pressao-create',
-                'display_name' => 'Registrar pressao',
-                'description' => 'Registrar nova pressao'
-            ],
-            [
-                'name' => 'pressao-edit',
-                'display_name' => 'Corrigir pressao',
-                'description' => 'Corrigir pressao'
-            ],
-            [
-                'name' => 'pressao-delete',
-                'display_name' => 'Excluir pressao',
-                'description' => 'Excluir pressao'
-            ],
-            //21 a 24
-            [
-                'name' => 'altitude-list',
-                'display_name' => 'Ver registros de altitude',
-                'description' => 'Ver altitude'
-            ],
-            [
-                'name' => 'altitude-create',
-                'display_name' => 'Registrar altitude',
-                'description' => 'Registrar nova altitude'
-            ],
-            [
-                'name' => 'altitude-edit',
-                'display_name' => 'Corrigir altitude',
-                'description' => 'Corrigir altitude'
-            ],
-            [
-                'name' => 'altitude-delete',
-                'display_name' => 'Excluir umidade',
-                'description' => 'Excluir umidade'
-            ],
-            
+                'name' => 'alertas',
+                'display_name' => 'Manipulação de alertas',
+                'description' => 'Manupula as informações sobre alertas'
+            ],             
         ];
 
         foreach ($permission as $key => $value) {
