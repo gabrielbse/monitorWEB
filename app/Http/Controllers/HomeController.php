@@ -9,6 +9,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Event;
+use Auth;
+use Mail;
+use App\Events\EnviarAlerta;
 
 /**
  * Class HomeController
@@ -33,6 +37,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+       /* $natureza = "Temperatura";
+        $valorLimite = 35;
+        $tipo = "abaixo";
+        $atual = 40;
+        Event::fire(new EnviarAlerta($natureza,$limite,$tipo, $atual));*/
         return view('home');
     }
 }

@@ -23,7 +23,7 @@
             @endsection
 
             <div class="pull-right">
-                @permission('umidadee')
+                @permission('umidade')
                     <a class="temp btn btn-primary" title="Umidade" data-toggle="tooltip" href="{{ route('umidade.coleta') }}"><span class="glyphicon glyphicon-plus"></span> Obter Umidade</a>
                 @endpermission
             </div>

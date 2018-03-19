@@ -16,7 +16,7 @@ class CreateAlertasTable extends Migration
             $table->increments('id');
             $table->integer('limite_maior_temperatura');
             $table->integer('limite_menor_temperatura');
-            $table->integer('limite_maior_umidadea');
+            $table->integer('limite_maior_umidade');
             $table->integer('limite_menor_umidade');
             $table->integer('limite_maior_pressao');
             $table->integer('limite_menor_pressao');

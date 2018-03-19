@@ -27,6 +27,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         'App\Events\PedirParaColetarAltitude' =>[
             'App\Listeners\ColetarAltitude',
+        ],        
+        'App\Events\EnviarAlerta' =>[
+            'App\Listeners\EmailAlerta',
         ],
     ];
 
