@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,7 +15,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
-
+        $tempo = new Carbon;
 		DB::table('users')->insert([
             'nome' => 'admin',
             'email' => 'gabrielbatista001@gmail.com',
@@ -43,6 +44,8 @@ class DatabaseSeeder extends Seeder
         ]);
         DB::table('logs')->insert([
             'acao' => "sistema iniciado",
+            'flag_envio' => 1,
+            'created_at' => $tempo,
         ]);
 
        for ($i=1; $i <= 12 ; $i++) { 

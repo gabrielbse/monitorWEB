@@ -16,44 +16,44 @@
               <div class="row">
                 <div class="form-group col-md-4">
                   <strong>Informar quando a temperatura for menor que (°C): </strong>
-                  <input type="number" name="limite_menor_temperatura" required="">               
+                  <input type="number" name="limite_menor_temperatura" required value="{{ $alertas->limite_menor_temperatura }}">               
                 </div>
                 <div class="form-group col-md-4">
                   <strong>Informar quando a temperatura for maior que (°C): </strong>
-                  <input type="number" name="limite_maior_temperatura" required>                
+                  <input type="number" name="limite_maior_temperatura" required value="{{ $alertas->limite_maior_temperatura }}">                 
                 </div>
               </div>
               <br>
               <div class="row">
                 <div class="form-group col-md-4">
                   <strong>Informar quando a umidade for menor que (%): </strong>
-                  <input type="number" name="limite_menor_umidade" required>               
+                  <input type="number" name="limite_menor_umidade" required value="{{ $alertas->limite_menor_umidade }}">               
                 </div>
                 <div class="form-group col-md-4">
                   <strong>Informar quando a umidade for maior que (%): </strong>
-                  <input type="number" name="limite_maior_umidade" required>                
+                  <input type="number" name="limite_maior_umidade" required value="{{ $alertas->limite_maior_umidade }}">                
                 </div>                
               </div>
               <br> 
                <div class="row">
                 <div class="form-group col-md-4">
                   <strong>Informar quando a pressão for menor que (Pa): </strong>
-                  <input type="number" name="limite_menor_pressao" required>               
+                  <input type="number" name="limite_menor_pressao" required value="{{ $alertas->limite_menor_pressao }}">               
                 </div>
                 <div class="form-group col-md-4">
                   <strong>Informar quando a pressão for maior que (Pa): </strong>
-                  <input type="number" name="limite_maior_pressao" required>                
+                  <input type="number" name="limite_maior_pressao" required value="{{ $alertas->limite_maior_pressao }}">                
                 </div>
               </div>
               <br> 
                <div class="row">
                 <div class="form-group col-md-4">
                   <strong>Informar quando a altitude for menor que (m): </strong>
-                  <input type="number" name="limite_menor_altitude" required>               
+                  <input type="number" name="limite_menor_altitude" required value="{{ $alertas->limite_menor_altitude }}">               
                 </div>
                 <div class="form-group col-md-4">
                   <strong>Informar quando a altitude for maior que (m): </strong>
-                  <input type="number" name="limite_maior_altitude" required>                
+                  <input type="number" name="limite_maior_altitude" required value="{{ $alertas->limite_maior_altitude }}">                
                 </div>
               </div>
               <br>

@@ -7,12 +7,14 @@ use Event;
 use App\Events\PedirParaColetarPressao;
 use App\Http\Requests;
 use App\Pressao;
+use App\Configuracoes;
 
 class PressaoController extends Controller
 {
     public function index()
     {   
-    	$pressao = Pressao::orderBy('created_at', 'desc')->take(5)->get();
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
+    	$pressao = Pressao::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('pressao.index', compact('pressao'));
     }
 

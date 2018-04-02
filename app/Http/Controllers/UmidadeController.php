@@ -7,12 +7,14 @@ use Event;
 use App\Events\PedirParaColetarUmidade;
 use App\Http\Requests;
 use App\Umidade;
+use App\Configuracoes;
 
 class UmidadeController extends Controller
 {
     public function index()
     {   
-    	$umidade = Umidade::orderBy('created_at', 'desc')->take(5)->get();
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
+    	$umidade = Umidade::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('umidade.index',compact('umidade'));
     }
 

@@ -31,16 +31,20 @@ class ColetarPressao
     public function handle(PedirParaColetarPressao $event)
     {
         $dom = new Dom;
-        $dom->loadFromUrl('http://192.168.0.101/?pressao');
-        $dom = $dom->find(".pressao")->innerHtml;
-        $alertas = Alertas::find(1);
-        $pressao = new Pressao();
-        $pressao->pressao = $dom;
-        $pressao->save();
-        if($pressao->pressao > $alertas->limite_maior_pressao){
-            Event::fire(new EnviarAlerta("pressao",$alertas->limite_maior_pressao,"acima", $pressao->pressao));
-        }elseif ($pressao->pressao < $alertas->limite_menor_pressao) {
-            Event::fire(new EnviarAlerta("pressao",$alertas->limite_menor_pressao,"abaixo", $pressao->pressao));
-        }
+        try{
+            $dom->loadFromUrl('http://192.168.0.101/?pressao');
+            $dom = $dom->find(".pressao")->innerHtml;
+            $alertas = Alertas::find(1);
+            $pressao = new Pressao();
+            $pressao->pressao = $dom;
+            $pressao->save();
+            if($pressao->pressao > $alertas->limite_maior_pressao){
+                Event::fire(new EnviarAlerta("pressao",$alertas->limite_maior_pressao,"acima", $pressao->pressao));
+            }elseif ($pressao->pressao < $alertas->limite_menor_pressao) {
+                Event::fire(new EnviarAlerta("pressao",$alertas->limite_menor_pressao,"abaixo", $pressao->pressao));
+            }
+        }catch(\Exception $e){
+            
+        }        
     }
 }

@@ -31,16 +31,20 @@ class ColetarTemperatura
     public function handle(PedirParaColetarTemperatura $event)
     {
         $dom = new Dom;
-        $dom->loadFromUrl('http://192.168.0.101/?temperatura');
-        $dom = $dom->find(".temperatura")->innerHtml;
-        $alertas = Alertas::find(1);
-        $temperatura = new Temperatura();
-        $temperatura->temperatura = $dom;
-        $temperatura->save();
-        if($temperatura->temperatura > $alertas->limite_maior_pressao){
-            Event::fire(new EnviarAlerta("temperatura",$alertas->limite_maior_temperatura,"acima", $temperatura->temperatura));
-        }elseif ($temperatura->temperatura < $alertas->limite_menor_pressao) {
-            Event::fire(new EnviarAlerta("temperatura",$alertas->limite_menor_temperatura,"abaixo", $temperatura->temperatur));
+        try{
+            $dom->loadFromUrl('http://192.168.0.101/?temperatura');
+            $dom = $dom->find(".temperatura")->innerHtml;
+            $alertas = Alertas::find(1);
+            $temperatura = new Temperatura();
+            $temperatura->temperatura = $dom;
+            $temperatura->save();
+            if($temperatura->temperatura > $alertas->limite_maior_temperatura){
+                Event::fire(new EnviarAlerta("temperatura",$alertas->limite_maior_temperatura,"acima", $temperatura->temperatura));
+            }elseif ($temperatura->temperatura < $alertas->limite_menor_temperatura) {
+                Event::fire(new EnviarAlerta("temperatura",$alertas->limite_menor_temperatura,"abaixo", $temperatura->temperatura));
+            }
+        }catch(\Exception $e){
+            
         }
     }
 }

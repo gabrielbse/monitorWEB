@@ -11,7 +11,8 @@ class ConfiguracoesController extends Controller
 {
     public function index()
     {   
-        return view('configuracoes.index');
+        $configuracoes = Configuracoes::find(1);
+        return view('configuracoes.index',compact('configuracoes'));
     }
 
     public function store(Request $request){
@@ -24,7 +25,7 @@ class ConfiguracoesController extends Controller
             //mantém true
         }
         elseif($request->enviar_email == "false" &&  $configuracoes->enviar_email==false){
-            //mentém false
+            //mantém false
         }
         elseif($request->enviar_email == "false" && $configuracoes->enviar_email){
             $role = Role::find(1);
@@ -36,6 +37,7 @@ class ConfiguracoesController extends Controller
         }
         $configuracoes->enviar_email = $request->enviar_email;        
     	$configuracoes->save();
-    	return view('configuracoes.index');
+    	$configuracoes = Configuracoes::find(1);
+        return view('configuracoes.index',compact('configuracoes'));
     }
 }

@@ -34,26 +34,90 @@
 
 @section('main-content')
 <br>
+<br>
+<br>
 <div class="row">
-	<!--  -->
-	<div class="col-lg-4 col-xs-6">
+    <!--  -->
+    
+    <div class="col-lg-3 col-xs-3">
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
-                <h3>3</h3>
+                <h3>{{$temperatura}}</h3>
 
-                <p>Fictício</p><br>
+                <p>°C</p><br>
             </div>
             <br>
             <div class="icon">
-            	<p>&nbsp;</p>
-                <i class="glyphicon glyphicon-saved"></i>
+                <p>&nbsp;</p>
+                <i class="fas fa-thermometer-quarter"></i>
                 
             </div>
-            <a href="#" class="small-box-footer">
+            <a href="{{route('temperatura.index')}}" class="small-box-footer">
+                Mais informações <i class="fa fa-arrow-circle-right"></i>   
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-3">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>{{$umidade}}</h3>
+
+                <p>%</p><br>
+            </div>
+            <br>
+            <div class="icon">
+                <p>&nbsp;</p>
+                <i class="fab fa-cloudversify"></i>
+            </div>
+            <a href="{{route('umidade.index')}}" class="small-box-footer">
                 Mais informações <i class="fa fa-arrow-circle-right"></i>   
             </a>
         </div>
     </div>
 </div>
+<br>
+<br>
+<div class="row">
+    <div class="col-lg-3 col-xs-3">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>{{$altitude}}</h3>
+
+                <p>m</p><br>
+            </div>
+            <br>
+
+            <div class="icon">              
+                <p>&nbsp;</p>
+                <i class="fab fa-cloudscale"></i>
+            </div>
+            <a href="{{route('altitude.index')}}" class="small-box-footer">
+                Mais informações <i class="fa fa-arrow-circle-right"></i>   
+            </a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-xs-3">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>{{$pressao}}</h3>
+
+                <p>pa</p><br>
+            </div>
+            <br>
+
+            <div class="icon">              
+                <p>&nbsp;</p>
+                <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <a href="{{route('pressao.index')}}" class="small-box-footer">
+                Mais informações <i class="fa fa-arrow-circle-right"></i>   
+            </a>
+        </div>
+    </div>
+</div>
+
 @endsection

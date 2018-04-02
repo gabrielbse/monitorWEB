@@ -31,16 +31,20 @@ class ColetarAltitude
     public function handle(PedirParaColetarAltitude $event)
     {
         $dom = new Dom;
-        $dom->loadFromUrl('http://192.168.0.101/?altitude');
-        $dom = $dom->find(".altitude")->innerHtml;
-        $alertas = Alertas::find(1);
-        $altitude = new Altitude();
-        $altitude->altitude = $dom;
-        $altitude->save();
-        if($altitude->altitude > $alertas->limite_maior_altitude){
-            Event::fire(new EnviarAlerta("altitude",$alertas->limite_maior_altitude,"acima", $altitude->altitude));
-        }elseif ($altitude->altitude < $alertas->limite_menor_altitude) {
-            Event::fire(new EnviarAlerta("altitude",$alertas->limite_menor_altitude,"abaixo", $altitude->altitude));
+        try{
+            $dom->loadFromUrl('http://192.168.0.101/?altitude');
+            $dom = $dom->find(".altitude")->innerHtml;
+            $alertas = Alertas::find(1);
+            $altitude = new Altitude();
+            $altitude->altitude = $dom;
+            $altitude->save();
+            if($altitude->altitude > $alertas->limite_maior_altitude){
+                Event::fire(new EnviarAlerta("altitude",$alertas->limite_maior_altitude,"acima", $altitude->altitude));
+            }elseif ($altitude->altitude < $alertas->limite_menor_altitude) {
+                Event::fire(new EnviarAlerta("altitude",$alertas->limite_menor_altitude,"abaixo", $altitude->altitude));
+            }
+        }catch(\Exception $e){
+            
         }
     }
 }

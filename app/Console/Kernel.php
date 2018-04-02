@@ -9,6 +9,7 @@ use App\Events\PedirParaColetarTemperatura;
 use App\Events\PedirParaColetarPressao;
 use App\Events\PedirParaColetarUmidade;
 use App\Events\PedirParaColetarAltitude;
+use App\Configuracoes;
 
 class Kernel extends ConsoleKernel
 {
@@ -29,20 +30,55 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
+        $config = Configuracoes::select('intervalo_coleta')->first();
+        if($config->intervalo_coleta == 5){
+            $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarTemperatura());
-        })->everyTenMinutes();
+            })->everyFiveMinutes();
 
-        $schedule->call(function () {
-            $teste = Event::fire(new PedirParaColetarPressao());
-        })->everyTenMinutes();
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarPressao());
+            })->everyFiveMinutes();
 
-        $schedule->call(function () {
-            $teste = Event::fire(new PedirParaColetarUmidade());
-        })->everyTenMinutes();
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarUmidade());
+            })->everyFiveMinutes();
 
-        $schedule->call(function () {
-            $teste = Event::fire(new PedirParaColetarAltitude());
-        })->everyTenMinutes();
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarAltitude());
+            })->everyFiveMinutes();
+        }elseif($config->intervalo_coleta == 10){
+            $schedule->call(function () {
+            $teste = Event::fire(new PedirParaColetarTemperatura());
+            })->everyTenMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarPressao());
+            })->everyTenMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarUmidade());
+            })->everyTenMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarAltitude());
+            })->everyTenMinutes();
+        }else{
+            $schedule->call(function () {
+            $teste = Event::fire(new PedirParaColetarTemperatura());
+            })->everyThirtyMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarPressao());
+            })->everyThirtyMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarUmidade());
+            })->everyThirtyMinutes();
+
+            $schedule->call(function () {
+                $teste = Event::fire(new PedirParaColetarAltitude());
+            })->everyThirtyMinutes();
+        }        
     }
 }

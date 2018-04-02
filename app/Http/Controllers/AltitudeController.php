@@ -7,12 +7,14 @@ use Event;
 use App\Events\PedirParaColetarAltitude;
 use App\Http\Requests;
 use App\Altitude;
+use App\Configuracoes;
 
 class AltitudeController extends Controller
 {
     public function index()
     {   
-    	$altitude = Altitude::orderBy('created_at', 'desc')->take(5)->get();
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
+    	$altitude = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('altitude.index',compact('altitude'));
     }
 

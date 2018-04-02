@@ -10,7 +10,8 @@ class AlertasController extends Controller
 {
     public function index()
     {   
-        return view('alertas.index');
+        $alertas = Alertas::find(1);
+        return view('alertas.index', compact('alertas'));
     }
 
     public function store(Request $request){
@@ -24,6 +25,7 @@ class AlertasController extends Controller
         $alertas->limite_maior_altitude = $request->limite_maior_altitude;
         $alertas->limite_menor_altitude = $request->limite_menor_altitude;
     	$alertas->save();
-    	return view('alertas.index');
+    	$alertas = Alertas::find(1);
+        return view('alertas.index', compact('alertas'));
     }
 }
