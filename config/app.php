@@ -165,6 +165,7 @@ return [
         Yajra\Datatables\DatatablesServiceProvider::class,
         //Criação de Formulários
         Collective\Html\HtmlServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
     ],
 
     /*
@@ -215,6 +216,10 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Datatables' => Yajra\Datatables\Facades\Datatables::class,
+        'PDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        //Snappy PDF
+        'SnappyPDF' => Barryvdh\Snappy\Facades\SnappyPdf::class,
+        'SnappyImage' => Barryvdh\Snappy\Facades\SnappyImage::class,
 
     ],
 

@@ -6,7 +6,7 @@
         <div class="col-lg-12 margin-tb">
             @section('contentheader_title')
                 <div class="pull-left">
-                    <h2> <i class="fas fa-cogs"></i> Configurações</h2>
+                    <h3> <i class="fas fa-cogs"></i> Configurações</h3>
                 </div>
             @endsection
             <br>
@@ -14,6 +14,7 @@
             <form id="form" role="form" method="post" action="{{ route('configuracoes.store') }}">
               {!! csrf_field() !!}
               <div class="row">
+                <br>
                 <div class="form-group col-md-3">
                   <strong>Quantidades de registros nos gráficos: </strong>
                   <select name="intervalo_grafico" id="intervalo_grafico" class="form-control">
@@ -40,17 +41,17 @@
                     @if ($configuracoes->intervalo_relatorio == 1)
                     <option value="1" selected>1 dia</option>
                     <option value="7">7 dias</option>
-                    <option value="15">15 dias</option>
+                    <option value="30">30 dias</option>
                     @endif
                     @if ($configuracoes->intervalo_relatorio == 7)
                     <option value="1">1 dia</option>
                     <option value="7" selected>7 dias</option>
-                    <option value="15">15 dias</option>
+                    <option value="30">30 dias</option>
                     @endif
-                    @if ($configuracoes->intervalo_relatorio == 15)
+                    @if ($configuracoes->intervalo_relatorio == 30)
                     <option value="1">1 dia</option>
                     <option value="7">7 dias</option>
-                    <option value="15" selected>15 dias</option>
+                    <option value="30" selected>30 dias</option>
                     @endif
                   </select>               
                 </div>
@@ -92,10 +93,10 @@
                 </div>
               </div> 
               <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 col-xs-6">
                   <button type="submit" class="btn btn-action btn-success">Salvar</button>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-xs-6">
                   <button type="reset" class="btn btn-action btn-danger">limpar</button>
                 </div>               
               </div>           

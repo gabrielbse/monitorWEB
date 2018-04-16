@@ -31,6 +31,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\EnviarAlerta' =>[
             'App\Listeners\EmailAlerta',
         ],
+        'App\Events\EnviarRelatorio' =>[
+            'App\Listeners\EmailRelatorio',
+        ],
     ];
 
     /**

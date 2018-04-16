@@ -39,7 +39,7 @@
 <div class="row">
     <!--  -->
     
-    <div class="col-lg-3 col-xs-3">
+    <div class="col-lg-3 col-xs-12">
         <!-- small box -->
         <div class="small-box bg-green">
             <div class="inner">
@@ -58,7 +58,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-xs-3">
+    <div class="col-lg-3 col-xs-12">
         <!-- small box -->
         <div class="small-box bg-yellow">
             <div class="inner">
@@ -80,7 +80,7 @@
 <br>
 <br>
 <div class="row">
-    <div class="col-lg-3 col-xs-3">
+    <div class="col-lg-3 col-xs-12">
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">
@@ -99,7 +99,7 @@
             </a>
         </div>
     </div>
-    <div class="col-lg-3 col-xs-3">
+    <div class="col-lg-3 col-xs-12">
         <!-- small box -->
         <div class="small-box bg-red">
             <div class="inner">

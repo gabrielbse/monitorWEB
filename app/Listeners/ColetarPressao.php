@@ -9,6 +9,8 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use App\Pressao;
 use App\Alertas;
 use PHPHtmlParser\Dom;
+use App\Logs;
+use Carbon\Carbon;
 
 class ColetarPressao
 {
@@ -32,19 +34,28 @@ class ColetarPressao
     {
         $dom = new Dom;
         try{
-            $dom->loadFromUrl('http://192.168.0.101/?pressao');
-            $dom = $dom->find(".pressao")->innerHtml;
+            //$dom->loadFromUrl('http://192.168.0.101/?pressao');
+            //$dom = $dom->find(".pressao")->innerHtml;
             $alertas = Alertas::find(1);
             $pressao = new Pressao();
-            $pressao->pressao = $dom;
+            //$pressao->pressao = $dom;
+            $pressao->pressao = rand (87000 ,930000 );
+            $pressao->relatado = false;
             $pressao->save();
-            if($pressao->pressao > $alertas->limite_maior_pressao){
-                Event::fire(new EnviarAlerta("pressao",$alertas->limite_maior_pressao,"acima", $pressao->pressao));
-            }elseif ($pressao->pressao < $alertas->limite_menor_pressao) {
-                Event::fire(new EnviarAlerta("pressao",$alertas->limite_menor_pressao,"abaixo", $pressao->pressao));
-            }
+            //if($pressao->pressao > $alertas->limite_maior_pressao){
+            //    Event::fire(new EnviarAlerta("pressao",$alertas->limite_maior_pressao,"acima", $pressao->pressao));
+            //}elseif ($pressao->pressao < $alertas->limite_menor_pressao) {
+                //Event::fire(new EnviarAlerta("pressao",$alertas->limite_menor_pressao,"abaixo", $pressao->pressao));
+            //}
+            $log = new Logs();
+            $log->acao = "Pressão medida com sucesso";
+            $log->flag_envio = 0;
+            $log->save();
         }catch(\Exception $e){
-            
+            $log = new Logs();
+            $log->acao = "Falha ao medir pressão";
+            $log->flag_envio = 0;
+            $log->save();
         }        
     }
 }

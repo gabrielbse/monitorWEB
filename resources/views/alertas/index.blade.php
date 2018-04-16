@@ -6,7 +6,7 @@
         <div class="col-lg-12 margin-tb">
             @section('contentheader_title')
                 <div class="pull-left">
-                    <h2> <i class="far fa-bell"></i> Alertas</h2>
+                    <h3> <i class="far fa-bell"></i> Alertas</h3>
                 </div>
             @endsection
             <br>
@@ -14,6 +14,7 @@
             <form id="form" role="form" method="post" action="{{ route('alertas.store') }}">
               {!! csrf_field() !!}
               <div class="row">
+                <br>
                 <div class="form-group col-md-4">
                   <strong>Informar quando a temperatura for menor que (°C): </strong>
                   <input type="number" name="limite_menor_temperatura" required value="{{ $alertas->limite_menor_temperatura }}">               
@@ -58,10 +59,12 @@
               </div>
               <br>
               <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 col-xs-6">
                   <button type="submit" class="btn btn-action btn-success">Salvar</button>
+                </div>
+                <div class="col-md-4 col-xs-6">
                   <button type="reset" class="btn btn-action btn-danger">limpar</button>
-                </div>               
+                </div>
               </div>           
             </form>
         </div>

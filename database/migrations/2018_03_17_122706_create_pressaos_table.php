@@ -15,6 +15,7 @@ class CreatePressaosTable extends Migration
         Schema::create('pressaos', function (Blueprint $table) {
             $table->increments('id');
             $table->float('pressao');
+            $table->boolean('relatado');
             $table->timestamps();
         });
     }

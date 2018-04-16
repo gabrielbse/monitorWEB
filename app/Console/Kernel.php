@@ -9,6 +9,7 @@ use App\Events\PedirParaColetarTemperatura;
 use App\Events\PedirParaColetarPressao;
 use App\Events\PedirParaColetarUmidade;
 use App\Events\PedirParaColetarAltitude;
+use App\Events\EnviarRelatorio;
 use App\Configuracoes;
 
 class Kernel extends ConsoleKernel
@@ -79,6 +80,22 @@ class Kernel extends ConsoleKernel
             $schedule->call(function () {
                 $teste = Event::fire(new PedirParaColetarAltitude());
             })->everyThirtyMinutes();
-        }        
+        }
+
+        //Relatório
+        if($config->intervalo_relatorio == 1){
+            $schedule->call(function () {
+                $teste = Event::fire(new EnviarRelatorio());
+            })->daily();
+        }elseif($config->intervalo_relatorio == 7){
+            $schedule->call(function () {
+                $teste = Event::fire(new EnviarRelatorio());
+            })->weekly();
+        }else{
+            $schedule->call(function () {
+                $teste = Event::fire(new EnviarRelatorio());
+            })->monthly(); 
+        }
+               
     }
 }

@@ -18,7 +18,7 @@
         <div class="col-lg-12 margin-tb">
             @section('contentheader_title')
                 <div class="pull-left">
-                    <h2> <i class="fab fa-cloudscale"></i> Altitude</h2>
+                    <h3> <i class="fab fa-cloudscale"></i> Altitude</h3>
                 </div>
             @endsection
 
@@ -45,9 +45,10 @@
         ]);
 
         var options = {
-          title: 'Altitude do banco',
-          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          title: 'Altitude (m)',
+          legend: {position: 'bottom'},
+          vAxis: {minValue: 0},
+          pointSize: 5,
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));

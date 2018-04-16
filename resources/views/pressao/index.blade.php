@@ -18,7 +18,7 @@
         <div class="col-lg-12 margin-tb">
             @section('contentheader_title')
                 <div class="pull-left">
-                    <h2> <i class="fas fa-tachometer-alt"></i> Pressão</h2>
+                    <h3> <i class="fas fa-tachometer-alt"></i> Pressão</h3>
                 </div>
             @endsection
 
@@ -45,9 +45,10 @@
         ]);
 
         var options = {
-          title: 'Pressão do banco',
-          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          title: 'Pressão (pa)',
+          legend: {position: 'bottom'},
+          vAxis: {minValue: 0},
+          pointSize: 5,
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));

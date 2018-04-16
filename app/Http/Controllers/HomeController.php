@@ -1,10 +1,5 @@
 <?php
 
-/*
- * Taken from
- * https://github.com/laravel/framework/blob/5.2/src/Illuminate/Auth/Console/stubs/make/controllers/HomeController.stub
- */
-
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
@@ -14,30 +9,23 @@ use App\Temperatura;
 use App\Pressao;
 use App\Umidade;
 use App\Altitude;
+use App\Events\EnviarRelatorio;
+use Event;
+use SnappyPDF;
+use Carbon\Carbon;
 
-/**
- * Class HomeController
- * @package App\Http\Controllers
- */
+
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return Response
-     */
     public function index()
     {
+        
         $temperatura = Temperatura::select('temperatura')->get()->last();
         if($temperatura == null){
             $temperatura = '-';

@@ -15,6 +15,7 @@ class CreateUmidadesTable extends Migration
         Schema::create('umidades', function (Blueprint $table) {
             $table->increments('id');
             $table->float('umidade');
+            $table->boolean('relatado');
             $table->timestamps();
         });
     }

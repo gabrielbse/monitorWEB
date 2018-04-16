@@ -15,6 +15,7 @@ class CreateAltitudesTable extends Migration
         Schema::create('altitudes', function (Blueprint $table) {
             $table->increments('id');
             $table->float('altitude');
+            $table->boolean('relatado');
             $table->timestamps();
         });
     }

@@ -18,10 +18,9 @@
         <div class="col-lg-12 margin-tb">
             @section('contentheader_title')
                 <div class="pull-left">
-                    <h2> <i class="fab fa-cloudversify"></i> Umidade</h2>
+                    <h3> <i class="fab fa-cloudversify"></i> Umidade</h3>
                 </div>
             @endsection
-
             <div class="pull-right">
                 @permission('umidade')
                     <a class="temp btn btn-primary" title="Umidade" data-toggle="tooltip" href="{{ route('umidade.coleta') }}"><span class="glyphicon glyphicon-plus"></span> Obter Umidade</a>
@@ -45,9 +44,10 @@
         ]);
 
         var options = {
-          title: 'Umidade do banco',
-          hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
-          vAxis: {minValue: 0}
+          title: 'Umidade (%)',
+          legend: {position: 'bottom'},
+          vAxis: {minValue: 0},
+          pointSize: 5,
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));

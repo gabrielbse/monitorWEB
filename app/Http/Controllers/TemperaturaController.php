@@ -21,7 +21,7 @@ class TemperaturaController extends Controller
 
     public function coleta()
     {
-        Event::fire(new PedirParaColetarTemperatura());        
+        Event::fire(new PedirParaColetarTemperatura());
         $temperatura = Temperatura::orderBy('created_at', 'desc')->take(5)->get();
         return view('temperatura.index', compact('temperatura'));
     }
