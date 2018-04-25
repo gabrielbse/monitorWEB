@@ -65,7 +65,7 @@ class EmailRelatorio
         $file = storage_path($local);
         if( file_exists($file) ){
             Mail::send('emails.emailRelatorio', ['user' => $user, 'file' => $file], function ($m) use ($user, $file) {
-                $m->to($user->email, $user->nome)->subject('Aviso - MonitorWEB!');
+                $m->to($user->email, $user->nome)->subject('Ralatório - MonitorWEB!');
                 $m->attach($file);
             });
             $log = new Logs();

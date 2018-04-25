@@ -57,6 +57,7 @@
           legend: {position: 'bottom'},
           vAxis: {minValue: 0},
           pointSize: 5,
+          colors:['green'],
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_temp'));
@@ -75,7 +76,8 @@
           title: 'Umidade (%)',
           legend: {position: 'bottom'},
           vAxis: {minValue: 0},
-          pointSize: 5,
+          pointSize: 5,          
+          colors:['orange'],
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_um'));
@@ -95,6 +97,7 @@
           legend: {position: 'bottom'},
           vAxis: {minValue: 0},
           pointSize: 5,
+          colors:['blue'],
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_alt'));
@@ -113,7 +116,8 @@
           title: 'Pressão (pa)',
           legend: {position: 'bottom'},
           vAxis: {minValue: 0},
-          pointSize: 5,
+          pointSize: 5,          
+          colors:['red'],
         };
 
         var chart = new google.visualization.AreaChart(document.getElementById('chart_pre'));
