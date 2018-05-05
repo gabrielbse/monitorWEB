@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $config = Configuracoes::select('intervalo_coleta')->first();
+        /*$config = Configuracoes::select('intervalo_coleta')->first();
         if($config->intervalo_coleta == 5){
             $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarTemperatura());
@@ -95,7 +95,7 @@ class Kernel extends ConsoleKernel
             $schedule->call(function () {
                 $teste = Event::fire(new EnviarRelatorio());
             })->monthly(); 
-        }
+        }*/
                
     }
 }

@@ -9,10 +9,6 @@ use App\Temperatura;
 use App\Pressao;
 use App\Umidade;
 use App\Altitude;
-use App\Events\EnviarRelatorio;
-use Event;
-use SnappyPDF;
-use Carbon\Carbon;
 
 
 class HomeController extends Controller

@@ -34,19 +34,18 @@ class ColetarTemperatura
     {
         $dom = new Dom;
         try{
-            //$dom->loadFromUrl('http://192.168.0.101/?temperatura');
-            //$dom = $dom->find(".temperatura")->innerHtml;
+            $dom->loadFromUrl('http://192.168.0.101/?temperatura');
+            $dom = $dom->find(".temperatura")->innerHtml;
             $alertas = Alertas::find(1);
             $temperatura = new Temperatura();
-            //$temperatura->temperatura = $dom;
-            $temperatura->temperatura = rand (15 ,40 );
+            $temperatura->temperatura = $dom;
             $temperatura->relatado = false;
             $temperatura->save();
-            //if($temperatura->temperatura > $alertas->limite_maior_temperatura){
-            //    Event::fire(new EnviarAlerta("temperatura",$alertas->limite_maior_temperatura,"acima", $temperatura->temperatura));
-            //}elseif ($temperatura->temperatura < $alertas->limite_menor_temperatura) {
-            //    Event::fire(new EnviarAlerta("temperatura",$alertas->limite_menor_temperatura,"abaixo", $temperatura->temperatura));
-            //}
+            if($temperatura->temperatura > $alertas->limite_maior_temperatura){
+                Event::fire(new EnviarAlerta("temperatura",$alertas->limite_maior_temperatura,"acima", $temperatura->temperatura));
+            }elseif ($temperatura->temperatura < $alertas->limite_menor_temperatura) {
+                Event::fire(new EnviarAlerta("temperatura",$alertas->limite_menor_temperatura,"abaixo", $temperatura->temperatura));
+            }
             $log = new Logs();
             $log->acao = "Temperatura medida com sucesso";
             $log->flag_envio = 0;

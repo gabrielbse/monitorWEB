@@ -15,11 +15,6 @@ Route::auth();
 Route::get('/', 'HomeController@index');
 
 Route::group(['middleware' => ['auth']], function() {  
-       
-       //Rotas de Usuário
-    Route::group(['prefix' => 'users', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'users.index', 'uses' => 'UserController@index', 'middleware' => ['permission:usuario']]);        
-    });
     Route::group(['prefix' => 'temperatura', 'where' => ['id' => '[0-9]+']], function() {
         Route::get('', ['as' => 'temperatura.index', 'uses' => 'TemperaturaController@index', 'middleware' => ['permission:temperatura']]);;
         Route::get('/temperatura', ['as' => 'temperatura.coleta', 'uses' => 'TemperaturaController@coleta', 'middleware' => ['permission:temperatura']]);
@@ -48,11 +43,5 @@ Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'alertas', 'where' => ['id' => '[0-9]+']], function() {
         Route::get('', ['as' => 'alertas.index', 'uses' => 'AlertasController@index', 'middleware' => ['permission:alertas']]);
         Route::post('/store', ['as' => 'alertas.store', 'uses' => 'AlertasController@store', 'middleware' => ['permission:alertas']]);
-    });
-
-    //Rotas de Roles
-    Route::group(['prefix' => 'roles', 'where' => ['id' => '[0-9]+']], function() {
-        Route::get('', ['as' => 'roles.index', 'uses' => 'RoleController@index', 'middleware' => ['permission:role']]);
-        Route::get('/list',['as' => 'roles.list', 'uses' => 'RoleController@listar', 'middleware' => ['permission:role']]);
     });
 });

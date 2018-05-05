@@ -34,19 +34,18 @@ class ColetarAltitude
     {
         $dom = new Dom;
         try{
-           // $dom->loadFromUrl('http://192.168.0.101/?altitude');
-            //$dom = $dom->find(".altitude")->innerHtml;
+            $dom->loadFromUrl('http://192.168.0.101/?altitude');
+            $dom = $dom->find(".altitude")->innerHtml;
             $alertas = Alertas::find(1);
             $altitude = new Altitude();
-            //$altitude->altitude = $dom;
-            $altitude->altitude = rand (200 ,500 );
+            $altitude->altitude = $dom;
             $altitude->relatado = false;
             $altitude->save();
-            //if($altitude->altitude > $alertas->limite_maior_altitude){
-            //    Event::fire(new EnviarAlerta("altitude",$alertas->limite_maior_altitude,"acima", $altitude->altitude));
-            //}elseif ($altitude->altitude < $alertas->limite_menor_altitude) {
-            //    Event::fire(new EnviarAlerta("altitude",$alertas->limite_menor_altitude,"abaixo", $altitude->altitude));
-            //}
+            if($altitude->altitude > $alertas->limite_maior_altitude){
+                Event::fire(new EnviarAlerta("altitude",$alertas->limite_maior_altitude,"acima", $altitude->altitude));
+            }elseif ($altitude->altitude < $alertas->limite_menor_altitude) {
+                Event::fire(new EnviarAlerta("altitude",$alertas->limite_menor_altitude,"abaixo", $altitude->altitude));
+            }
             $log = new Logs();
             $log->acao = "Altitude medida com sucesso";
             $log->flag_envio = 0;

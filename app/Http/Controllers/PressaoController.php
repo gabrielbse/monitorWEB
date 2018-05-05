@@ -19,8 +19,9 @@ class PressaoController extends Controller
     }
 
     public function coleta(){
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
     	Event::fire(new PedirParaColetarPressao());
-    	$pressao = Pressao::orderBy('created_at', 'desc')->take(5)->get();
+    	$pressao = Pressao::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('pressao.index', compact('pressao'));
     }
 }

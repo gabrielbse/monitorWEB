@@ -34,19 +34,18 @@ class ColetarUmidade
     {
         $dom = new Dom;
         try{
-            //$dom->loadFromUrl('http://192.168.0.101/?umidade');
-            //$dom = $dom->find(".umidade")->innerHtml;
+            $dom->loadFromUrl('http://192.168.0.101/?umidade');
+            $dom = $dom->find(".umidade")->innerHtml;
             $alertas = Alertas::find(1);
             $umidade = new Umidade();
-            //$umidade->umidade = $dom;
-            $umidade->umidade = rand (20 ,80 );
+            $umidade->umidade = $dom;
             $umidade->relatado = false;
             $umidade->save();
-            //if($umidade->umidade > $alertas->limite_maior_umidade){
-            //    Event::fire(new EnviarAlerta("umidade",$alertas->limite_maior_umidade,"acima", $umidade->umidade));
-            //}elseif ($umidade->umidade < $alertas->limite_menor_umidade) {
-            //    Event::fire(new EnviarAlerta("umidade",$alertas->limite_menor_umidade,"abaixo", $umidade->umidade));
-            //}
+            if($umidade->umidade > $alertas->limite_maior_umidade){
+                Event::fire(new EnviarAlerta("umidade",$alertas->limite_maior_umidade,"acima", $umidade->umidade));
+            }elseif ($umidade->umidade < $alertas->limite_menor_umidade) {
+                Event::fire(new EnviarAlerta("umidade",$alertas->limite_menor_umidade,"abaixo", $umidade->umidade));
+            }
             $log = new Logs();
             $log->acao = "Umidade medida com sucesso";
             $log->flag_envio = 0;

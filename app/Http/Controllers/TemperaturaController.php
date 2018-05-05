@@ -9,7 +9,6 @@ use App\Http\Requests;
 use App\Temperatura;
 use App\Configuracoes;
 
-
 class TemperaturaController extends Controller
 {
 	public function index()
@@ -19,10 +18,10 @@ class TemperaturaController extends Controller
         return view('temperatura.index', compact('temperatura'));
     }
 
-    public function coleta()
-    {
+    public function coleta(){
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
         Event::fire(new PedirParaColetarTemperatura());
-        $temperatura = Temperatura::orderBy('created_at', 'desc')->take(5)->get();
+        $temperatura = Temperatura::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('temperatura.index', compact('temperatura'));
     }
 }

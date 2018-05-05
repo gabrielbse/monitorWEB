@@ -19,9 +19,9 @@ class AltitudeController extends Controller
     }
 
     public function coleta(){
+        $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
     	Event::fire(new PedirParaColetarAltitude());
-    	$altitude = Altitude::orderBy('created_at', 'desc')->take(5)->get();
+    	$altitude = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
         return view('altitude.index',compact('altitude'));
     }
-
 }

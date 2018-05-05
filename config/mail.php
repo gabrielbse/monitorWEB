@@ -55,7 +55,7 @@ return [
     |
     */
 
-    'from' => ['address' => 'fabricacpds@gmail.com', 'name' => 'MonitorWEB'],
+    'from' => ['address' => 'monittorweb@gmail.com', 'name' => 'MonitorWEB'],
 
     /*
     |--------------------------------------------------------------------------
