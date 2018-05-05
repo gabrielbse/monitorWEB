@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 
+use Event;
 use App\Events\PedirParaColetarAltitude;
 use App\Events\EnviarAlerta;
 use Illuminate\Queue\InteractsWithQueue;
