@@ -52,8 +52,9 @@ class ColetarAltitude
             $log->flag_envio = 0;
             $log->save();
         }catch(\Exception $e){
+            $info = $e->getMessage();
             $log = new Logs();
-            $log->acao = "Falha ao medir altitude";
+            $log->acao = "Falha ao medir altitude: " .$info;
             $log->flag_envio = 0;
             $log->save();
         }

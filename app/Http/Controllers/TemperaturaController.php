@@ -14,14 +14,20 @@ class TemperaturaController extends Controller
 	public function index()
     {   
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
-        $temperatura = Temperatura::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('temperatura.index', compact('temperatura'));
+        $temperaturas = Temperatura::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($temperaturas as $temperatura) {
+            $temperatura->date = $temperatura->created_at->format('d/m H:i');
+        }
+        return view('temperatura.index', compact('temperaturas'));
     }
 
     public function coleta(){
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
         Event::fire(new PedirParaColetarTemperatura());
-        $temperatura = Temperatura::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('temperatura.index', compact('temperatura'));
+        $temperaturas = Temperatura::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($temperaturas as $temperatura) {
+            $temperatura->date = $temperatura->created_at->format('d/m H:i');
+        }
+        return view('temperatura.index', compact('temperaturas'));
     }
 }

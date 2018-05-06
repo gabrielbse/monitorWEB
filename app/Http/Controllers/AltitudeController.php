@@ -14,14 +14,20 @@ class AltitudeController extends Controller
     public function index()
     {   
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
-    	$altitude = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('altitude.index',compact('altitude'));
+    	$altitudes = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($altitudes as $altitude) {
+            $altitude->date = $altitude->created_at->format('d/m H:i');
+        }
+        return view('altitude.index',compact('altitudes'));
     }
 
     public function coleta(){
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
     	Event::fire(new PedirParaColetarAltitude());
-    	$altitude = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('altitude.index',compact('altitude'));
+    	$altitudes = Altitude::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($altitudes as $altitude) {
+            $altitude->date = $altitude->created_at->format('d/m H:i');
+        }
+        return view('altitude.index',compact('altitudes'));
     }
 }

@@ -31,15 +31,14 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Umidade'],
-          @foreach ($umidade as $umidades)
-            ['{{$umidades->created_at}}',{{$umidades->umidade}}],
+          @foreach ($umidades as $umidade)
+            ['{{$umidade->date}}',{{$umidade->umidade}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Umidade (%)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
           pointSize: 5,          
           colors:['orange'],
         };

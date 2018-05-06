@@ -32,15 +32,14 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Pressão'],
-          @foreach ($pressao as $pressaos)
-            ['{{$pressaos->created_at}}',{{$pressaos->pressao}}],
+          @foreach ($pressaos as $pressao)
+            ['{{$pressao->date}}',{{$pressao->pressao}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Pressão (pa)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
           pointSize: 5,          
           colors:['red'],
         };

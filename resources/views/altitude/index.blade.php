@@ -32,15 +32,14 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Altitude'],
-          @foreach ($altitude as $altitudes)
-            ['{{$altitudes->created_at}}',{{$altitudes->altitude}}],
+          @foreach ($altitudes as $altitude)
+            ['{{$altitude->date}}',{{$altitude->altitude}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Altitude (m)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
           pointSize: 5,
           colors:['blue'],
         };

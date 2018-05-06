@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call(PermissionTableSeeder::class);
         $this->call(RoleTableSeeder::class);
         $tempo = new Carbon;
+        $tempo = $tempo->subHour();
 		DB::table('users')->insert([
             'nome' => 'admin',
             'email' => 'gabrielbatista001@gmail.com',
@@ -27,7 +28,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('configuracoes')->insert([
             'intervalo_coleta' => 10,
-            'intervalo_relatorio' => 7,
+            'intervalo_relatorio' => 1,
             'intervalo_grafico' => 5,
             'enviar_email' => true,
         ]);

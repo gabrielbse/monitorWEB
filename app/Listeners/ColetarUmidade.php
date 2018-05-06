@@ -52,8 +52,9 @@ class ColetarUmidade
             $log->flag_envio = 0;
             $log->save();
         }catch(\Exception $e){
+            $info = $e->getMessage();
             $log = new Logs();
-            $log->acao = "Falha ao medir umidade";
+            $log->acao = "Falha ao medir umidade: " .$info;
             $log->flag_envio = 0;
             $log->save();
         }

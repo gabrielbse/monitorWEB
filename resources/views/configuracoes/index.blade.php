@@ -36,22 +36,22 @@
                   </select>                
                 </div>
                 <div class="form-group col-md-3">
-                  <strong>Intervalo para geração de relatório (dias): </strong>
+                  <strong>Intervalo para geração de relatório: </strong>
                   <select name="intervalo_relatorio" id="intervalo_relatorio" class="form-control">
                     @if ($configuracoes->intervalo_relatorio == 1)
-                    <option value="1" selected>1 dia</option>
-                    <option value="7">7 dias</option>
-                    <option value="30">30 dias</option>
+                    <option value="1" selected>1 hora</option>
+                    <option value="24">1 dia</option>
+                    <option value="168">7 dias</option>
                     @endif
-                    @if ($configuracoes->intervalo_relatorio == 7)
-                    <option value="1">1 dia</option>
-                    <option value="7" selected>7 dias</option>
-                    <option value="30">30 dias</option>
+                    @if ($configuracoes->intervalo_relatorio == 24)
+                    <option value="1">1 hora</option>
+                    <option value="24" selected>1 dia</option>
+                    <option value="168">7 dias</option>
                     @endif
-                    @if ($configuracoes->intervalo_relatorio == 30)
-                    <option value="1">1 dia</option>
-                    <option value="7">7 dias</option>
-                    <option value="30" selected>30 dias</option>
+                    @if ($configuracoes->intervalo_relatorio == 168)
+                    <option value="1">1 hora</option>
+                    <option value="24">1 dia</option>
+                    <option value="168" selected>7 dias</option>
                     @endif
                   </select>               
                 </div>

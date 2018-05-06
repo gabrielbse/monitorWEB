@@ -32,15 +32,14 @@
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Temperatura'],
-          @foreach ($temperatura as $temperaturas)
-            ['{{$temperaturas->created_at}}',{{$temperaturas->temperatura}}],
+          @foreach ($temperaturas as $temperatura)
+            ['{{$temperatura->date}}',{{$temperatura->temperatura}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Temperatura (°C)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
           pointSize: 5,
           colors:['green'],
         };

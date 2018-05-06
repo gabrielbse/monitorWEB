@@ -52,8 +52,9 @@ class ColetarTemperatura
             $log->flag_envio = 0;
             $log->save();
         }catch(\Exception $e){
+            $info = $e->getMessage();
             $log = new Logs();
-            $log->acao = "Falha ao medir temperatura";
+            $log->acao = "Falha ao medir temperatura: " .$info;
             $log->flag_envio = 0;
             $log->save();
         }

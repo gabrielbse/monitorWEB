@@ -14,14 +14,20 @@ class UmidadeController extends Controller
     public function index()
     {   
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
-    	$umidade = Umidade::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('umidade.index',compact('umidade'));
+    	$umidades = Umidade::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($umidades as $umidade) {
+            $umidade->date = $umidade->created_at->format('d/m H:i');
+        }
+        return view('umidade.index',compact('umidades'));
     }
 
     public function coleta(){
         $configuracoes = Configuracoes::find(1)->select('intervalo_grafico')->first();
     	Event::fire(new PedirParaColetarUmidade());
-    	$umidade = Umidade::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
-        return view('umidade.index',compact('umidade'));
+    	$umidades = Umidade::orderBy('created_at', 'desc')->take($configuracoes->intervalo_grafico)->get();
+        foreach ($umidades as $umidade) {
+            $umidade->date = $umidade->created_at->format('d/m H:i');
+        }
+        return view('umidade.index',compact('umidades'));
     }
 }

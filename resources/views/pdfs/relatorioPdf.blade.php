@@ -31,11 +31,14 @@
         <script type="text/javascript" src="http://www.google.com/jsapi"></script>
     </head>
 <body>
-    <div class="col-lg-3 col-xs-12" id="chart_temp" style="width: 100%; height: 200px;"></div>
-    <div class="col-lg-3 col-xs-12" id="chart_um" style="width: 100%; height: 200px;"></div>
-    <div class="col-lg-3 col-xs-12" id="chart_pre" style="width: 100%; height: 200px;"></div>
-    <div class="col-lg-3 col-xs-12" id="chart_alt" style="width: 100%; height: 200px;"></div>
-    
+  <div class="row">
+    <div class="col-lg-3 col-xs-12" id="chart_temp" style="width: 1000px; height: 320px;"></div>
+    <div class="col-lg-3 col-xs-12" id="chart_um" style="width: 1000px; height: 320px;"></div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-xs-12" id="chart_pre" style="width: 1000px; height: 320px;"></div>
+    <div class="col-lg-3 col-xs-12" id="chart_alt" style="width: 1000px; height: 320px;"></div>
+  </div>
 </body>
 
 <script type="text/javascript">
@@ -47,15 +50,15 @@
       function tempChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Temperatura'],
-          @foreach ($temperatura as $temperaturas)
-            ['{{$temperaturas->created_at}}',{{$temperaturas->temperatura}}],
+          @foreach ($temperaturas as $temperatura)
+            ['{{$temperatura->date}}',{{$temperatura->temperatura}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Temperatura (°C)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
+          //vAxis: {minValue: 0},
           pointSize: 5,
           colors:['green'],
         };
@@ -67,15 +70,15 @@
       function umChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Umidade'],
-          @foreach ($umidade as $umidades)
-            ['{{$umidades->created_at}}',{{$umidades->umidade}}],
+          @foreach ($umidades as $umidade)
+            ['{{$umidade->date}}',{{$umidade->umidade}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Umidade (%)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
+          //vAxis: {minValue: 0},
           pointSize: 5,          
           colors:['orange'],
         };
@@ -87,15 +90,15 @@
       function altChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Altitude'],
-          @foreach ($altitude as $altitudes)
-            ['{{$altitudes->created_at}}',{{$altitudes->altitude}}],
+          @foreach ($altitudes as $altitude)
+            ['{{$altitude->date}}',{{$altitude->altitude}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Altitude (m)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
+          //vAxis: {minValue: 0},
           pointSize: 5,
           colors:['blue'],
         };
@@ -107,15 +110,15 @@
       function preChart() {
         var data = google.visualization.arrayToDataTable([
           ['Momento', 'Pressão'],
-          @foreach ($pressao as $pressaos)
-            ['{{$pressaos->created_at}}',{{$pressaos->pressao}}],
+          @foreach ($pressaos as $pressao)
+            ['{{$pressao->date}}',{{$pressao->pressao}}],
           @endforeach
         ]);
 
         var options = {
           title: 'Pressão (pa)',
           legend: {position: 'bottom'},
-          vAxis: {minValue: 0},
+          //vAxis: {minValue: 0},
           pointSize: 5,          
           colors:['red'],
         };

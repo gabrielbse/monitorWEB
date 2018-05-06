@@ -10,7 +10,7 @@
         <h2>Universidade Estadual do Sudoeste da Bahia</h2>
         <p>Credenciada Pelo Decreto Estadual nº 7.344 de 27.05.1998<br>
         Departamento de Ciências e Tecnologia - DCT<br>
-        Campus de JEquié</p>
+        Campus de Jequié</p>
      </p>
      <hr>
      <br>

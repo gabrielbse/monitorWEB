@@ -52,8 +52,9 @@ class ColetarPressao
             $log->flag_envio = 0;
             $log->save();
         }catch(\Exception $e){
+            $info = $e->getMessage();
             $log = new Logs();
-            $log->acao = "Falha ao medir pressão";
+            $log->acao = "Falha ao medir pressão: " .$info;
             $log->flag_envio = 0;
             $log->save();
         }        

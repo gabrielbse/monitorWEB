@@ -1,3 +1,3 @@
-<p>Olá {{ $user->nome }},</p>
+<p>Olá {{ $user->nome }}</p>
 <br>
-<p>Segue em anexo o relatório diário</p>
+<p>Segue em anexo o relatório diário.</p>

@@ -11,6 +11,7 @@ use App\Events\PedirParaColetarUmidade;
 use App\Events\PedirParaColetarAltitude;
 use App\Events\EnviarRelatorio;
 use App\Configuracoes;
+use App\Logs;
 
 class Kernel extends ConsoleKernel
 {
@@ -31,18 +32,18 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        /*$config = Configuracoes::select('intervalo_coleta')->first();
+        $config = Configuracoes::find(1);
         if($config->intervalo_coleta == 5){
             $schedule->call(function () {
             $teste = Event::fire(new PedirParaColetarTemperatura());
             })->everyFiveMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarPressao());
+                $teste = Event::fire(new PedirParaColetarUmidade());
             })->everyFiveMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarUmidade());
+                $teste = Event::fire(new PedirParaColetarPressao());
             })->everyFiveMinutes();
 
             $schedule->call(function () {
@@ -54,11 +55,11 @@ class Kernel extends ConsoleKernel
             })->everyTenMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarPressao());
+                $teste = Event::fire(new PedirParaColetarUmidade());
             })->everyTenMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarUmidade());
+                $teste = Event::fire(new PedirParaColetarPressao());
             })->everyTenMinutes();
 
             $schedule->call(function () {
@@ -70,11 +71,11 @@ class Kernel extends ConsoleKernel
             })->everyThirtyMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarPressao());
+                $teste = Event::fire(new PedirParaColetarUmidade());
             })->everyThirtyMinutes();
 
             $schedule->call(function () {
-                $teste = Event::fire(new PedirParaColetarUmidade());
+                $teste = Event::fire(new PedirParaColetarPressao());
             })->everyThirtyMinutes();
 
             $schedule->call(function () {
@@ -86,16 +87,15 @@ class Kernel extends ConsoleKernel
         if($config->intervalo_relatorio == 1){
             $schedule->call(function () {
                 $teste = Event::fire(new EnviarRelatorio());
+            })->hourly();
+        }elseif($config->intervalo_relatorio == 24){
+            $schedule->call(function () {
+                $teste = Event::fire(new EnviarRelatorio());
             })->daily();
-        }elseif($config->intervalo_relatorio == 7){
+        }elseif($config->intervalo_relatorio == 168){
             $schedule->call(function () {
                 $teste = Event::fire(new EnviarRelatorio());
-            })->weekly();
-        }else{
-            $schedule->call(function () {
-                $teste = Event::fire(new EnviarRelatorio());
-            })->monthly(); 
-        }*/
-               
+            })->weekly(); 
+        }        
     }
 }

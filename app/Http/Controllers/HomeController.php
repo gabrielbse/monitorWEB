@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use Auth;
@@ -9,7 +8,6 @@ use App\Temperatura;
 use App\Pressao;
 use App\Umidade;
 use App\Altitude;
-
 
 class HomeController extends Controller
 {
@@ -21,7 +19,6 @@ class HomeController extends Controller
 
     public function index()
     {
-        
         $temperatura = Temperatura::select('temperatura')->get()->last();
         if($temperatura == null){
             $temperatura = '-';

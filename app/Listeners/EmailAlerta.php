@@ -43,7 +43,7 @@ class EmailAlerta
                 $tipo = $event->getTipo();
                 $valorLimite = $event->getValorLimite();
                 $atual = $event->getAtual();
-                $user = Auth::user();
+                $user = User::find(1);
                 Mail::send('emails.emailAlerta', ['user' => $user, 'natureza' => $natureza,'tipo' => $tipo, 'valorLimite' => $valorLimite, 'atual' => $atual], function ($m) use ($user,$natureza,$tipo,$valorLimite, $atual) {
                     $m->to($user->email, $user->nome)->subject('Aviso - MonitorWEB!');
                 });
