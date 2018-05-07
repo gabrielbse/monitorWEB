@@ -6,9 +6,7 @@ return array(
     'pdf' => array(
         'enabled' => true,
         'binary' => '"C:\Program Files\wkhtmltopdf\bin\wkhtmltopdf"',
-        //'binary' => '"/usr/bin/wkhtmltopdf"',
-        //'binary' => '/usr/local/bin/wkhtmltopdf',
-        //'binary' => '/usr/bin/wkhtmltopdf',
+        //'binary' => 'xvfb-run /usr/bin/wkhtmltopdf',
         'timeout' => false,
         'options' => array(),
         'env'     => array(),

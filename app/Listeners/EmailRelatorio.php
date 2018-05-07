@@ -57,9 +57,7 @@ class EmailRelatorio
 
 
             $user = User::find(1);
-            $footer = \View::make('pdfs.footerRelatorioPdf')->render();
-            $header = \View::make('pdfs.headerRelatorioPdf')->render();
-            $pdf = SnappyPDF::loadView('pdfs.relatorioPdf',compact('temperaturas', 'pressaos', 'umidades', 'altitudes'))->setPaper('a4')->setOption('header-html',$header)->setOption('footer-html',$footer);
+            $pdf = SnappyPDF::loadView('pdfs.relatorioPdf',compact('temperaturas', 'pressaos', 'umidades', 'altitudes'))->setPaper('a4');
             $tempo = new Carbon();
             $tempo = $tempo->format('d-m-Y H-i-s');
             $local = 'app\public\relatorio - ' . $tempo . '.pdf';
@@ -87,7 +85,7 @@ class EmailRelatorio
             $file = storage_path($local);
             if( file_exists($file) ){
                 Mail::send('emails.emailRelatorio', ['user' => $user, 'file' => $file], function ($m) use ($user, $file) {
-                    $m->to($user->email, $user->nome)->subject('Ralatório - MonitorWEB!');
+                    $m->to($user->email, $user->nome)->subject('Relatório - MonitorWEB!');
                     $m->attach($file);
                 });
                 $log = new Logs();
